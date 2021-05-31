@@ -249,7 +249,7 @@ basic.forever(function () {
     }
 
     /* Player vs Bot */
-    else if (player1 == 0 || player2 == 0) {
+    else {
         if (1) {
             
         }
