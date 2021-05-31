@@ -98,7 +98,8 @@ basic.forever(function () {
                 break;
             }
         }
-    
+    confirm = 0;
+
     // GAME
     while (1) {
         /* wariables */
@@ -160,14 +161,63 @@ basic.forever(function () {
         }
     }
     // evaluation
-    if (player1 == 0 && player2 == 0) {
-        if (1) {
 
+    /* Player vs Player */
+    if (player1 == 0 && player2 == 0) {
+        if (resultarr[2] == 1) {
+            while (1) {
+                for (i = 0; i < 4; i++) {
+                    if (resultarr[0] == 1) {
+                        for (y = 0; y < 3; y++) {
+                            led.unplot(resultarr[1]+1, y+1);
+                            pause(100);   
+                        }
+                        for (y = 0; y < 3; y++) {
+                            led.plot(resultarr[1]+1, y+1);
+                            pause(100);   
+                        }   
+                    }
+                    else if (resultarr[0] == 2) {
+                        for (y = 0; y < 3; y++) {
+                            led.unplot(y+1, resultarr[1]+1);
+                            pause(100);   
+                        }
+                        for (y = 0; y < 3; y++) {
+                            led.plot(y+1, resultarr[1]+1);
+                            pause(100);   
+                        }   
+                    }
+
+
+
+
+                }
+                basic.clearScreen();
+                basic.showString("P");
+                pause(1000);
+                for (y = 0; y < 4; y++) {
+                    basic.clearScreen()
+                    pause(500);
+                    basic.showNumber(resultarr[2]);
+                    pause(500);
+                }
+
+                // ending
+                input.onButtonPressed(Button.AB, function () {
+                    confirm == 1;
+                })
+                if (confirm == 1) {
+                    break;
+                }
+            
+            }
         }
         else {
 
         }
     }
+
+    /* Player vs Bot */
     else if (player1 == 0 || player2 == 0) {
         if (1) {
 
@@ -176,6 +226,8 @@ basic.forever(function () {
 
         }
     }
+
+    /* Bot vs Bot */
     else {
         if (1) {
 
