@@ -183,7 +183,7 @@ basic.forever(function () {
                         pause(100);   
                     }
                     for (y = 0; y < 3; y++) {
-                        led.plot(resultarr[1]+1, y+1);
+                        led.plotBrightness(resultarr[1]+1, y+1, 255 + 128 - 128 * resultarr[2]);
                         pause(100);   
                     }   
                 }
@@ -194,7 +194,7 @@ basic.forever(function () {
                         pause(100);   
                     }
                     for (y = 0; y < 3; y++) {
-                        led.plot(y+1, resultarr[1]+1);
+                        led.plotBrightness(y+1, resultarr[1]+1, 255 + 128 - 128 * resultarr[2]);
                         pause(100);   
                     }   
                 }
@@ -205,7 +205,7 @@ basic.forever(function () {
                         pause(100);   
                     }
                     for (y = 0; y < 3; y++) {
-                        led.plot(y+1, y+1);
+                        led.plotBrightness(y+1, y+1, 255 + 128 - 128 * resultarr[2]);
                         pause(100);   
                     }   
                 }
@@ -216,7 +216,7 @@ basic.forever(function () {
                         pause(100);   
                     }
                     for (y = 0; y < 3; y++) {
-                        led.plot(y+1, 3-y+1);
+                        led.plotBrightness(y+1, 3-y+1, 255 + 128 - 128 * resultarr[2]);
                         pause(100);   
                     }   
                 }
