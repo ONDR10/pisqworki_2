@@ -153,6 +153,10 @@ basic.forever(function () {
                     }
                 }
             }
+            // ending afer win/lost
+            if (resultarr[0] != 0) {
+                break;
+            }        
         }
     }
     // evaluation
