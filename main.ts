@@ -165,6 +165,16 @@ basic.forever(function () {
     /* Player vs Player || Bot vs Bot */   
     if ((player1 == 0 && player2 == 0) || (player1 != 0 && player2 != 0)) {
         while (1) {
+            for(i = 0; i < 3; i++) {
+                for (y = 0; y < 3; y++) {
+                    if (deskarr[i][y] == 1) {
+                        led.plot(i + 1, y + 1);
+                    }
+                    else if (deskarr[i][y] == 2) {
+                        led.plotBrightness(i + 1, y + 1, 128);
+                    }
+                }
+            }
             for (i = 0; i < 4; i++) {
                 // row_win
                 if (resultarr[0] == 1) {
