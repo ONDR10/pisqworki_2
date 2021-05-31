@@ -167,6 +167,7 @@ basic.forever(function () {
         if (resultarr[2] == 1) {
             while (1) {
                 for (i = 0; i < 4; i++) {
+                    // row_win
                     if (resultarr[0] == 1) {
                         for (y = 0; y < 3; y++) {
                             led.unplot(resultarr[1]+1, y+1);
@@ -177,6 +178,7 @@ basic.forever(function () {
                             pause(100);   
                         }   
                     }
+                    // column_win
                     else if (resultarr[0] == 2) {
                         for (y = 0; y < 3; y++) {
                             led.unplot(y+1, resultarr[1]+1);
@@ -186,6 +188,38 @@ basic.forever(function () {
                             led.plot(y+1, resultarr[1]+1);
                             pause(100);   
                         }   
+                    }
+                    // diagonal_win
+                    else if (resultarr[0] == 3 && resultarr[1] == 1) {
+                        for (y = 0; y < 3; y++) {
+                            led.unplot(y+1, y+1);
+                            pause(100);   
+                        }
+                        for (y = 0; y < 3; y++) {
+                            led.plot(y+1, y+1);
+                            pause(100);   
+                        }   
+                    }
+                    // second diagonal_win 
+                    else if (resultarr[0] == 2) {
+                        for (y = 0; y < 3; y++) {
+                            led.unplot(y+1, 3-y+1);
+                            pause(100);   
+                        }
+                        for (y = 0; y < 3; y++) {
+                            led.plot(y+1, 3-y+1);
+                            pause(100);   
+                        }   
+                    }
+                    // error
+                    else {
+                        basic.showLeds(`
+                        # # # # #
+                        # . . . .
+                        # # # # .
+                        # . . . .
+                        # # # # #
+                        `)
                     }
 
 
