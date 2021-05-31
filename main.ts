@@ -162,8 +162,8 @@ basic.forever(function () {
     }
     // evaluation
 
-    /* Player vs Player */
-    if (player1 == 0 && player2 == 0) {
+    /* Player vs Player || Bot vs Bot */   
+    if ((player1 == 0 && player2 == 0) || (player1 != 0 && player2 != 0)) {
         while (1) {
             for (i = 0; i < 4; i++) {
                 // row_win
@@ -219,14 +219,20 @@ basic.forever(function () {
                     # . . . .
                     # # # # #
                     `)
+                    pause(10000);
                 }
             }
             // Player
             basic.clearScreen();
-            basic.showString("P");
+            if (player1 == 0 && player2 == 0) {
+                basic.showString("P");
+            }
+            else {
+                basic.showString("Bot");
+            }
             pause(1000);
             for (y = 0; y < 4; y++) {
-                basic.clearScreen()
+                basic.clearScreen();
                 pause(500);
                 basic.showNumber(resultarr[2]);
                 pause(500);
@@ -246,16 +252,6 @@ basic.forever(function () {
     else if (player1 == 0 || player2 == 0) {
         if (1) {
             
-        }
-        else {
-
-        }
-    }
-
-    /* Bot vs Bot */
-    else {
-        if (1) {
-
         }
         else {
 
