@@ -31,6 +31,11 @@ function decraselevel(myint = 0)
 
 /* Program */
 basic.forever(function () {
+    // reset variables
+    player1 = 0;
+    player2 = 1;
+    confirm = 0;
+
 	// player1 in mode: 1
     if (mode) {
         basic.showString("Vyber 1. hraca:");
@@ -93,5 +98,13 @@ basic.forever(function () {
 
 
     // evaluation
-    
+    if (player1 == 0 && player2 == 0) {
+
+    }
+    else if (player1 == 0 || player2 == 0) {
+        
+    }
+    else {
+
+    }
 })
