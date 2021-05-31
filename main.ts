@@ -164,97 +164,88 @@ basic.forever(function () {
 
     /* Player vs Player */
     if (player1 == 0 && player2 == 0) {
-        if (resultarr[2] == 1) {
-            while (1) {
-                for (i = 0; i < 4; i++) {
-                    // row_win
-                    if (resultarr[0] == 1) {
-                        for (y = 0; y < 3; y++) {
-                            led.unplot(resultarr[1]+1, y+1);
-                            pause(100);   
-                        }
-                        for (y = 0; y < 3; y++) {
-                            led.plot(resultarr[1]+1, y+1);
-                            pause(100);   
-                        }   
+        while (1) {
+            for (i = 0; i < 4; i++) {
+                // row_win
+                if (resultarr[0] == 1) {
+                    for (y = 0; y < 3; y++) {
+                        led.unplot(resultarr[1]+1, y+1);
+                        pause(100);   
                     }
-                    // column_win
-                    else if (resultarr[0] == 2) {
-                        for (y = 0; y < 3; y++) {
-                            led.unplot(y+1, resultarr[1]+1);
-                            pause(100);   
-                        }
-                        for (y = 0; y < 3; y++) {
-                            led.plot(y+1, resultarr[1]+1);
-                            pause(100);   
-                        }   
-                    }
-                    // diagonal_win
-                    else if (resultarr[0] == 3 && resultarr[1] == 1) {
-                        for (y = 0; y < 3; y++) {
-                            led.unplot(y+1, y+1);
-                            pause(100);   
-                        }
-                        for (y = 0; y < 3; y++) {
-                            led.plot(y+1, y+1);
-                            pause(100);   
-                        }   
-                    }
-                    // second diagonal_win 
-                    else if (resultarr[0] == 2) {
-                        for (y = 0; y < 3; y++) {
-                            led.unplot(y+1, 3-y+1);
-                            pause(100);   
-                        }
-                        for (y = 0; y < 3; y++) {
-                            led.plot(y+1, 3-y+1);
-                            pause(100);   
-                        }   
-                    }
-                    // error
-                    else {
-                        basic.showLeds(`
-                        # # # # #
-                        # . . . .
-                        # # # # .
-                        # . . . .
-                        # # # # #
-                        `)
-                    }
-
-
-
-
+                    for (y = 0; y < 3; y++) {
+                        led.plot(resultarr[1]+1, y+1);
+                        pause(100);   
+                    }   
                 }
-                basic.clearScreen();
-                basic.showString("P");
-                pause(1000);
-                for (y = 0; y < 4; y++) {
-                    basic.clearScreen()
-                    pause(500);
-                    basic.showNumber(resultarr[2]);
-                    pause(500);
+                // column_win
+                else if (resultarr[0] == 2) {
+                    for (y = 0; y < 3; y++) {
+                        led.unplot(y+1, resultarr[1]+1);
+                        pause(100);   
+                    }
+                    for (y = 0; y < 3; y++) {
+                        led.plot(y+1, resultarr[1]+1);
+                        pause(100);   
+                    }   
                 }
-
-                // ending
-                input.onButtonPressed(Button.AB, function () {
-                    confirm == 1;
-                })
-                if (confirm == 1) {
-                    break;
+                // diagonal_win
+                else if (resultarr[0] == 3 && resultarr[1] == 1) {
+                    for (y = 0; y < 3; y++) {
+                        led.unplot(y+1, y+1);
+                        pause(100);   
+                    }
+                    for (y = 0; y < 3; y++) {
+                        led.plot(y+1, y+1);
+                        pause(100);   
+                    }   
                 }
-            
+                // second diagonal_win 
+                else if (resultarr[0] == 2) {
+                    for (y = 0; y < 3; y++) {
+                        led.unplot(y+1, 3-y+1);
+                        pause(100);   
+                    }
+                    for (y = 0; y < 3; y++) {
+                        led.plot(y+1, 3-y+1);
+                        pause(100);   
+                    }   
+                }
+                // error
+                else {
+                    basic.showLeds(`
+                    # # # # #
+                    # . . . .
+                    # # # # .
+                    # . . . .
+                    # # # # #
+                    `)
+                }
             }
-        }
-        else {
+            // Player
+            basic.clearScreen();
+            basic.showString("P");
+            pause(1000);
+            for (y = 0; y < 4; y++) {
+                basic.clearScreen()
+                pause(500);
+                basic.showNumber(resultarr[2]);
+                pause(500);
+            }
 
+            // ending
+            input.onButtonPressed(Button.AB, function () {
+                confirm == 1;
+            })
+            if (confirm == 1) {
+                break;
+            }
         }
     }
 
     /* Player vs Bot */
     else if (player1 == 0 || player2 == 0) {
         if (1) {
-
+            
         }
         else {
 
