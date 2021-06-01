@@ -115,6 +115,8 @@ basic.forever(function () {
         let diagonal_2 = 0;
         /* game */
 
+        
+
         /* control */
         for (j = 1; j < 3; j++) {
             // reset diagonal variables
