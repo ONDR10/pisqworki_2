@@ -38,7 +38,7 @@ basic.forever(function () {
     player1 = 0;
     player2 = 1;
     confirm = 0;
-    deskarr = [[0, 0, 2], [0, 2, 0], [2, 0, 0]];
+    deskarr = [[1, 2, 1], [0, 2, 0], [0, 2, 1]];
     resultarr = [0, 0, 0];
 
 	// player1 in mode: 1
@@ -171,18 +171,14 @@ basic.forever(function () {
         }
     }
     // evaluation
-    basic.showNumber(resultarr[0]);
 
     /* Player vs Player || Bot vs Bot */   
     if ((player1 == 0 && player2 == 0) || (player1 != 0 && player2 != 0)) {
         while (1) {
             for(i = 0; i < 3; i++) {
                 for (y = 0; y < 3; y++) {
-                    if (deskarr[i][y] == 1) {
-                        led.plot(y + 1, i + 1);
-                    }
-                    else if (deskarr[i][y] == 2) {
-                        led.plotBrightness(i + 1, y + 1, 128);
+                    if (deskarr[i][y] != 0) {
+                        led.plotBrightness(y + 1, i + 1, 255 + 128 - 128 * deskarr[i][y]);
                     }
                 }
             }
@@ -190,22 +186,22 @@ basic.forever(function () {
                 // row_win
                 if (resultarr[0] == 1) {
                     for (y = 0; y < 3; y++) {
-                        led.unplot(resultarr[1]+1, y+1);
+                        led.unplot(y+1, resultarr[1]+1);
                         pause(100);   
                     }
                     for (y = 0; y < 3; y++) {
-                        led.plotBrightness(resultarr[1]+1, y+1, 255 + 128 - 128 * resultarr[2]);
+                        led.plotBrightness(y+1, resultarr[1]+1, 255 + 128 - 128 * resultarr[2]);
                         pause(100);   
                     }   
                 }
                 // column_win
                 else if (resultarr[0] == 2) {
                     for (y = 0; y < 3; y++) {
-                        led.unplot(y+1, resultarr[1]+1);
+                        led.unplot(resultarr[1]+1, y+1);
                         pause(100);   
                     }
                     for (y = 0; y < 3; y++) {
-                        led.plotBrightness(y+1, resultarr[1]+1, 255 + 128 - 128 * resultarr[2]);
+                        led.plotBrightness(resultarr[1]+1, y+1, 255 + 128 - 128 * resultarr[2]);
                         pause(100);   
                     }   
                 }
@@ -223,11 +219,11 @@ basic.forever(function () {
                 // second diagonal_win 
                 else if (resultarr[0] == 3) {
                     for (y = 0; y < 3; y++) {
-                        led.unplot(y+1, 3-y+1);
+                        led.unplot(y+1, 3-y);
                         pause(100);   
                     }
                     for (y = 0; y < 3; y++) {
-                        led.plotBrightness(y+1, 3-y+1, 255 + 128 - 128 * resultarr[2]);
+                        led.plotBrightness(y+1, 3-y, 255 + 128 - 128 * resultarr[2]);
                         pause(100);   
                     }   
                 }
