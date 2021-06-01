@@ -38,7 +38,7 @@ basic.forever(function () {
     player1 = 0;
     player2 = 1;
     confirm = 0;
-    deskarr = [[1, 1, 1], [0, 0, 0], [0, 0, 0]];
+    deskarr = [[1, 0, 0], [0, 1, 0], [2, 2, 1]];
     resultarr = [0, 0, 0];
 
 	// player1 in mode: 1
@@ -73,7 +73,7 @@ basic.forever(function () {
     }
     // player2 in mode: 0
     else {
-        basic.showString("Vyber obtiaznost: ");
+        //basic.showString("Vyber obtiaznost: ");
     }
     while (1) {
             if (player2 != 0) {
@@ -104,7 +104,8 @@ basic.forever(function () {
     basic.clearScreen();
 
     // GAME
-    while (1) {
+    let myint = 0; // 9 moves possible
+    for (myint = 0; myint < 9; myint++) {
         /* wariables */
         let row = 0;
         let column = 0;
@@ -213,7 +214,7 @@ basic.forever(function () {
                     }   
                 }
                 // second diagonal_win 
-                else if (resultarr[0] == 2) {
+                else if (resultarr[0] == 3) {
                     for (y = 0; y < 3; y++) {
                         led.unplot(y+1, 3-y+1);
                         pause(100);   
@@ -222,6 +223,10 @@ basic.forever(function () {
                         led.plotBrightness(y+1, 3-y+1, 255 + 128 - 128 * resultarr[2]);
                         pause(100);   
                     }   
+                }
+                // draw
+                else if (resultarr[0] == 0) {
+                    break
                 }
                 // error
                 else {
@@ -237,29 +242,36 @@ basic.forever(function () {
             }
             // Player
             basic.clearScreen();
-            if (player1 == 0 && player2 == 0) {
+            if (resultarr[0] == 0) {
+                basic.showString("DRAW");
+            }
+            else if (player1 == 0 && player2 == 0) {
                 basic.showString("P");
             }
             else {
                 basic.showString("Bot");
             }
             pause(500);
-            for (y = 0; y < 2; y++) {
-                basic.clearScreen();
-                pause(250);
-                basic.showNumber(resultarr[2]);
-                pause(250);
-                basic.clearScreen();
-            }
+            if (resultarr[0] != 0) {
+                for (y = 0; y < 2; y++) {
+                    basic.clearScreen();
+                    pause(250);
+                    basic.showNumber(resultarr[2]);
+                    pause(250);
+                    basic.clearScreen();
+                }
+            }   
 
             // ending
             input.onButtonPressed(Button.AB, function () {
                 confirm == 1;
             })
             if (confirm == 1) {
+                basic.showString("AS");
                 break;
             }
         }
+    confirm = 0; // reset
     }
 
     /* Player vs Bot */
