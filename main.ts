@@ -38,12 +38,12 @@ basic.forever(function () {
     player1 = 0;
     player2 = 1;
     confirm = 0;
-    deskarr = [[1, 0, 0], [0, 1, 0], [2, 2, 1]];
+    deskarr = [[1, 0, 0], [0, 1, 0], [0, 0, 1]];
     resultarr = [0, 0, 0];
 
 	// player1 in mode: 1
     if (mode) {
-        basic.showString("Vyber 1. hraca:");
+        basic.showString("1. hrac:");
         while (1) {
             if (player1 != 0) {
                 basic.showNumber(player1);
@@ -69,7 +69,7 @@ basic.forever(function () {
     confirm = 0;
     // player2 in mode: 1
     if (mode) {
-        basic.showString("Vyber 2. hraca:");
+        basic.showString("2. hrac:");
     }
     // player2 in mode: 0
     else {
@@ -130,7 +130,7 @@ basic.forever(function () {
                     // column
                     if (deskarr[y][i] == j) {
                         column++;
-                        if (row == 3) {
+                        if (column == 3) {
                             resultarr[0] = 2; // 2 means column_win
                             resultarr[1] = i; // which column is winning
                             resultarr[2] = j; // which player is winner
@@ -140,7 +140,7 @@ basic.forever(function () {
                     // diagonal 1
                     if (deskarr[i][i] == j && y == 0) {
                         diagonal_1++;
-                        if (row == 3) {
+                        if (diagonal_1 == 3) {
                             resultarr[0] = 3; // 3 means diagonal_win
                             resultarr[1] = 1; // which diagonal is winning (1 == top-left corner to bottom-right corner)
                             resultarr[2] = j; // which player is winner
@@ -150,7 +150,7 @@ basic.forever(function () {
                     // diagonal 2
                     if (deskarr[i][2 - i] == j && y == 0) {
                         diagonal_2++;
-                        if (row == 3) {
+                        if (diagonal_2 == 3) {
                             resultarr[0] = 3; // 3 means diagonal_win
                             resultarr[1] = 2; // which diagonal is winning (2 == top-right corner to bottom-right corner)
                             resultarr[2] = j; // which player is winner
@@ -165,6 +165,7 @@ basic.forever(function () {
         }
     }
     // evaluation
+    basic.showNumber(resultarr[0]);
 
     /* Player vs Player || Bot vs Bot */   
     if ((player1 == 0 && player2 == 0) || (player1 != 0 && player2 != 0)) {
@@ -282,4 +283,7 @@ basic.forever(function () {
 
         }
     }
+
+    // pause before restart
+    pause(2000);
 })
