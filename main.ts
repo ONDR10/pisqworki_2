@@ -6,6 +6,7 @@ let confirm = 0;  // variable for confirm (AB button)
 let deskarr = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]; // desk
 let resultarr = [0, 0, 0]; // describe wins
 let i = 0, j = 0, y = 0;
+let helpint = 0; // "speed in win" in player section
 
 /* functions */
 function incraselevel(myint = 0)
@@ -38,8 +39,9 @@ basic.forever(function () {
     player1 = 0;
     player2 = 1;
     confirm = 0;
-    deskarr = [[1, 2, 1], [0, 2, 0], [0, 2, 1]];
+    deskarr = [[1, 2, 1], [2, 1, 2], [1, 2, 1]];
     resultarr = [0, 0, 0];
+    helpint = 0;
 
 	// player1 in mode: 1
     if (mode) {
@@ -170,10 +172,7 @@ basic.forever(function () {
             break;        
         }
     }
-    // evaluation
-
-    /* Player vs Player || Bot vs Bot */   
-    if ((player1 == 0 && player2 == 0) || (player1 != 0 && player2 != 0)) {
+    // evaluation   
         while (1) {
             for(i = 0; i < 3; i++) {
                 for (y = 0; y < 3; y++) {
@@ -229,7 +228,7 @@ basic.forever(function () {
                 }
                 // draw
                 else if (resultarr[0] == 0) {
-                    break
+                    ;
                 }
                 // error
                 else {
@@ -245,26 +244,51 @@ basic.forever(function () {
             }
             // Player
             basic.clearScreen();
-            if (resultarr[0] == 0) {
-                basic.showString("DRAW");
-            }
-            else if (player1 == 0 && player2 == 0) {
-                basic.showString("P");
-            }
-            else {
-                basic.showString("Bot");
-            }
-            pause(500);
-            if (resultarr[0] != 0) {
-                for (y = 0; y < 2; y++) {
+            if ((player1 == 0 && player2 != 0) || (player1 != 0 && player2 == 0)) {
+                if ((player1 == 0 && resultarr[2] == 1) || (player1 != 0 && resultarr[2] != 1)) {
+                    if (helpint == 0) {
+                        basic.showString("Win");
+                        pause(333);
+                        helpint++;
+                    }
+                    basic.showIcon(IconNames.Happy);
+                    pause(333);
                     basic.clearScreen();
-                    pause(250);
-                    basic.showNumber(resultarr[2]);
-                    pause(250);
-                    basic.clearScreen();
+                    pause(333); 
                 }
-            }   
-
+                else {
+                    if (helpint == 0) {
+                        basic.showString("Lost");
+                        pause(333);
+                        helpint++;
+                    }
+                    basic.showIcon(IconNames.Sad);
+                    pause(333);
+                    basic.clearScreen();
+                    pause(333);
+                }
+            }
+            else {    
+                if (resultarr[0] == 0) {
+                    basic.showString("DRAW");
+                }
+                else if (player1 == 0 && player2 == 0) {
+                    basic.showString("P");
+                }
+                else {
+                    basic.showString("Bot");
+                }
+                pause(200);
+                if (resultarr[0] != 0) {
+                    for (y = 0; y < 2; y++) {
+                        basic.clearScreen();
+                        pause(100);
+                        basic.showNumber(resultarr[2]);
+                        pause(100);
+                        basic.clearScreen();
+                    }
+                }   
+            }
             // ending
             input.onButtonPressed(Button.AB, function () {
                 confirm = 1;
@@ -274,18 +298,6 @@ basic.forever(function () {
             }
         }
     confirm = 0; // reset
-    }
-
-    /* Player vs Bot */
-    else {
-        if (1) {
-            
-        }
-        else {
-
-        }
-    }
-
     // pause before restart
     pause(2000);
 })
