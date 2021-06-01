@@ -264,10 +264,9 @@ basic.forever(function () {
 
             // ending
             input.onButtonPressed(Button.AB, function () {
-                confirm == 1;
+                confirm = 1;
             })
             if (confirm == 1) {
-                basic.showString("AS");
                 break;
             }
         }
