@@ -38,7 +38,7 @@ basic.forever(function () {
     player1 = 0;
     player2 = 1;
     confirm = 0;
-    deskarr = [[0, 0, 0], [0, 0, 0], [0, 0, 0]];
+    deskarr = [[1, 1, 1], [0, 0, 0], [0, 0, 0]];
     resultarr = [0, 0, 0];
 
 	// player1 in mode: 1
@@ -100,6 +100,9 @@ basic.forever(function () {
         }
     confirm = 0;
 
+    // clear screen
+    basic.clearScreen();
+
     // GAME
     while (1) {
         /* wariables */
@@ -154,10 +157,10 @@ basic.forever(function () {
                     }
                 }
             }
-            // ending afer win/lost
-            if (resultarr[0] != 0) {
-                break;
-            }        
+        }        
+        // ending afer win/lost
+        if (resultarr[0] != 0) {
+            break;        
         }
     }
     // evaluation
@@ -240,12 +243,13 @@ basic.forever(function () {
             else {
                 basic.showString("Bot");
             }
-            pause(1000);
-            for (y = 0; y < 4; y++) {
+            pause(500);
+            for (y = 0; y < 2; y++) {
                 basic.clearScreen();
-                pause(500);
+                pause(250);
                 basic.showNumber(resultarr[2]);
-                pause(500);
+                pause(250);
+                basic.clearScreen();
             }
 
             // ending
