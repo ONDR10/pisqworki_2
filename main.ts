@@ -176,6 +176,7 @@ basic.forever(function () {
     }
     // evaluation   
         while (1) {
+            // draw desk
             for(i = 0; i < 3; i++) {
                 for (y = 0; y < 3; y++) {
                     if (deskarr[i][y] != 0) {
