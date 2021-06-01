@@ -38,7 +38,7 @@ basic.forever(function () {
     player1 = 0;
     player2 = 1;
     confirm = 0;
-    deskarr = [[1, 0, 0], [0, 1, 0], [0, 0, 1]];
+    deskarr = [[0, 0, 2], [0, 2, 0], [2, 0, 0]];
     resultarr = [0, 0, 0];
 
 	// player1 in mode: 1
@@ -115,7 +115,13 @@ basic.forever(function () {
 
         /* control */
         for (j = 1; j < 3; j++) {
+            // reset diagonal variables
+            diagonal_1 = 0;
+            diagonal_2 = 0;
             for (i = 0; i < 3; i++) {
+                // reset row and column variables
+                row = 0;
+                column = 0;
                 for (y = 0; y < 3; y++) {
                     // row
                     if (deskarr[i][y] == j) {
@@ -173,7 +179,7 @@ basic.forever(function () {
             for(i = 0; i < 3; i++) {
                 for (y = 0; y < 3; y++) {
                     if (deskarr[i][y] == 1) {
-                        led.plot(i + 1, y + 1);
+                        led.plot(y + 1, i + 1);
                     }
                     else if (deskarr[i][y] == 2) {
                         led.plotBrightness(i + 1, y + 1, 128);
