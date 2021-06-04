@@ -1,5 +1,5 @@
 /* variables */
-let mode = 0; // 2 options (mode: 0/1) 
+let mode = 1; // 2 options (mode: 0/1) 
 let player1 = 0;  // player/bot
 let player2 = 1;  // player/bot
 let confirm = 0;  // variable for confirm (AB button)
@@ -7,6 +7,9 @@ let deskarr = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]; // desk
 let resultarr = [0, 0, 0]; // describe wins
 let i = 0, j = 0, y = 0;
 let helpint = 0; // "speed in win" in player section
+let round = 0; // which player playing now 
+let desk_empy_arr = [0, 0, 0, 0, 0, 0, 0, 0, 0]; // array for random bot
+let x = 0; // help with Bots
 
 /* functions */
 function incraselevel(myint = 0)
@@ -36,12 +39,14 @@ function decraselevel(myint = 0)
 /* Program */
 basic.forever(function () {
     // reset variables
-    player1 = 0;
+    player1 = 1;
     player2 = 1;
     confirm = 0;
-    deskarr = [[1, 2, 1], [2, 1, 2], [1, 2, 1]];
+    deskarr = [[0, 0, 0], [0, 0, 0], [0, 0, 0]];
     resultarr = [0, 0, 0];
     helpint = 0;
+    desk_empy_arr = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+    x = 0;
 
 	// player1 in mode: 1
     if (mode) {
@@ -115,7 +120,56 @@ basic.forever(function () {
         let diagonal_2 = 0;
         /* game */
 
+        // find empy blocks
+        for (i = 0, j = 0; i < 3; i++) {
+            for (y = 0; y < 3; y++) {
+                if (deskarr[i][y] == 0) {
+                    desk_empy_arr[j] = i*3 + y;
+                    j++
+                }
+            }
+        }
+
+
+        // Player 
+        if ((round == 0 && player1 == 0) || (round == 1 && player2 == 0)) {
+    
+        } 
+        // Bot 1 (random)
+        if ((round == 0 && player1 == 1) || (round == 1 && player2 == 1)) {
+            x = desk_empy_arr[Math.floor(Math.random() * (10-myint))];
+            deskarr[x/3][x%3] = round+1;
+            pause(300);
+        }
+        // Bot 2
+        if ((round == 0 && player1 == 2) || (round == 1 && player2 == 2)) {
+
+        }
+        // Bot 3
+        if ((round == 0 && player1 == 3) || (round == 1 && player2 == 3)) {
+
+        }
+
+        // change round
+        if (round == 0) {
+            round = 1;
+        }
+        else if (round == 1) {
+            round = 0;
+        }
+        else {
+            _py.VALUE_ERROR
+        }
         
+        // draw desk
+        for(i = 0; i < 3; i++) {
+            for (y = 0; y < 3; y++) {
+                if (deskarr[i][y] != 0) {
+                    led.plotBrightness(y + 1, i + 1, 255 + 128 - 128 * deskarr[i][y]);
+                }
+            }
+        }
+
 
         /* control */
         for (j = 1; j < 3; j++) {
