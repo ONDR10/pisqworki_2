@@ -1,5 +1,5 @@
 /* variables */
-let mode = 1; // 2 options (mode: 0/1) 
+let mode = 0; // 2 options (mode: 0/1) 
 let player1 = 0;  // player/bot
 let player2 = 1;  // player/bot
 let confirm = 0;  // variable for confirm (AB button)
@@ -39,7 +39,7 @@ function decraselevel(myint = 0)
 /* Program */
 basic.forever(function () {
     // reset variables
-    player1 = 1;
+    player1 = 0;
     player2 = 1;
     confirm = 0;
     deskarr = [[0, 0, 0], [0, 0, 0], [0, 0, 0]];
@@ -50,6 +50,7 @@ basic.forever(function () {
 
 	// player1 in mode: 1
     if (mode) {
+        player1 = 1; // default Bot1
         basic.showString("1. hrac:");
         while (1) {
             if (player1 != 0) {
@@ -138,7 +139,7 @@ basic.forever(function () {
         // Bot 1 (random)
         if ((round == 0 && player1 == 1) || (round == 1 && player2 == 1)) {
             x = desk_empy_arr[Math.floor(Math.random() * (10-myint))];
-            deskarr[x/3][x%3] = round+1;
+            deskarr[Math.trunc(x/3)][x%3] = round+1;
             pause(300);
         }
         // Bot 2
