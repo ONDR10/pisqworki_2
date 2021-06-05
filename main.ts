@@ -126,7 +126,7 @@ basic.forever(function () {
             for (y = 0; y < 3; y++) {
                 if (deskarr[i][y] == 0) {
                     desk_empy_arr[j] = i*3 + y;
-                    j++
+                    j++;
                 }
             }
         }
