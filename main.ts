@@ -134,7 +134,7 @@ basic.forever(function () {
 
         // Player 
         if ((round == 0 && player1 == 0) || (round == 1 && player2 == 0)) {
-    
+            
         } 
         // Bot 1 (random)
         if ((round == 0 && player1 == 1) || (round == 1 && player2 == 1)) {
@@ -146,7 +146,7 @@ basic.forever(function () {
         if ((round == 0 && player1 == 2) || (round == 1 && player2 == 2)) {
 
         }
-        // Bot 3
+        // Bot 3 (invincible)
         if ((round == 0 && player1 == 3) || (round == 1 && player2 == 3)) {
             if (deskarr[1][1] == 0) {
                 deskarr[1][1] = round+1;
