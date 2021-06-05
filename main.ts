@@ -148,7 +148,12 @@ basic.forever(function () {
         }
         // Bot 3
         if ((round == 0 && player1 == 3) || (round == 1 && player2 == 3)) {
-
+            if (deskarr[1][1] == 0) {
+                deskarr[1][1] = round+1;
+            }
+            else {
+                
+            }
         }
 
         // change round
