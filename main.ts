@@ -142,17 +142,24 @@ basic.forever(function () {
             deskarr[Math.trunc(x/3)][x%3] = round+1;
             pause(300);
         }
-        // Bot 2
-        if ((round == 0 && player1 == 2) || (round == 1 && player2 == 2)) {
-
-        }
-        // Bot 3 (invincible)
-        if ((round == 0 && player1 == 3) || (round == 1 && player2 == 3)) {
+        // Bot 2 (medium) && Bot 3 (invincible)
+        else {
             if (deskarr[1][1] == 0) {
                 deskarr[1][1] = round+1;
+                pause(300);
             }
-            else {
+            else if (1) {
                 
+            }
+            // Bot 2
+            else if ((round == 0 && player1 == 2) || (round == 1 && player2 == 2)) {
+                x = desk_empy_arr[Math.floor(Math.random() * (10-myint))];
+                deskarr[Math.trunc(x/3)][x%3] = round+1;
+                pause(300);
+            }
+            // Bot 3
+            else {
+
             }
         }
 
