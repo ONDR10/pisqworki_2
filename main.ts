@@ -10,7 +10,7 @@ let helpint = 0; // "speed in win" in player section
 let round = 0; // which player playing now 
 let desk_empy_arr = [0, 0, 0, 0, 0, 0, 0, 0, 0]; // array for random bot
 let x = 0; // help with Bots
-let potencionalwinarr = [0, 0, 0, 0];
+let potencionalwinarr = [0, 0, 0];
 
 /* functions */
 function incraselevel(myint = 0)
@@ -47,7 +47,7 @@ basic.forever(function () {
     resultarr = [0, 0, 0];
     helpint = 0;
     desk_empy_arr = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-    potencionalwinarr = [0, 0, 0, 0];
+    potencionalwinarr = [0, 0, 0];
     x = 0;
 
 	// player1 in mode: 1
@@ -121,6 +121,9 @@ basic.forever(function () {
         let column = 0;
         let diagonal_1 = 0;
         let diagonal_2 = 0;
+        // reset variables
+        potencionalwinarr = [0, 0, 0];
+
         /* game */
 
         // find potencional wins
@@ -128,56 +131,58 @@ basic.forever(function () {
             /* row */
             if (((deskarr[i][0] + deskarr[i][1] + deskarr[i][2]) == 2) || ((deskarr[i][0] + deskarr[i][1] + deskarr[i][2]) == 4)) {
                 if (((deskarr[i][0] + deskarr[i][1]) != 0) && ((deskarr[i][0] + deskarr[i][2]) != 0) && ((deskarr[i][1] + deskarr[i][2]) != 0)) {
-                    potencionalwinarr[0] = (deskarr[i][0] + deskarr[i][1] + deskarr[i][2]) / 2; // who is potencional winner
-                    potencionalwinarr[1] = 0; // 0 means row_win
-                    potencionalwinarr[2] = i; // where is potencional win
+                    potencionalwinarr[0] = 1; // 1 means row_win
+                    potencionalwinarr[1] = i; // where is potencional win
                     if (deskarr[i][0] == 0) {
-                        potencionalwinarr[3] = 0; // where is empy arr
+                        potencionalwinarr[2] = 0; // where is empy arr
                     }
                     else {
-                        potencionalwinarr[3] = (deskarr[i][1] == 0) ? 1 : 2;
+                        potencionalwinarr[2] = (deskarr[i][1] == 0) ? 1 : 2;
                     }
                 }    
             }
             /* column */
             if (((deskarr[0][i] + deskarr[1][i] + deskarr[2][i]) == 2) || ((deskarr[0][i] + deskarr[1][i] + deskarr[2][i]) == 4)) {
                 if (((deskarr[i][0] + deskarr[i][1]) != 0) && ((deskarr[i][0] + deskarr[i][2]) != 0) && ((deskarr[i][1] + deskarr[i][2]) != 0)) {
-                    potencionalwinarr[0] = (deskarr[0][i] + deskarr[1][i] + deskarr[2][i]) / 2; // who is potencional winner
-                    potencionalwinarr[1] = 1; // 1 means column_win
-                    potencionalwinarr[2] = i; // where is potencional win
-                    if (deskarr[0][i] == 0) {
-                        potencionalwinarr[3] = 0; // where is empy arr
-                    }
-                    else {
-                        potencionalwinarr[3] = (deskarr[1][i] == 0) ? 1 : 2;
+                    if (((deskarr[0][i] + deskarr[1][i] + deskarr[2][i] == 4) && (round == 1)) || ((deskarr[0][i] + deskarr[1][i] + deskarr[2][i] == 2) && (round == 0)) || (potencionalwinarr[0] != 0)) {
+                        potencionalwinarr[0] = 2; // 2 means column_win
+                        potencionalwinarr[1] = i; // where is potencional win
+                        if (deskarr[0][i] == 0) {
+                            potencionalwinarr[2] = 0; // where is empy arr
+                        }
+                        else {
+                            potencionalwinarr[2] = (deskarr[1][i] == 0) ? 1 : 2;
+                        }
                     }
                 }    
             }
             /* diagonal */
             if (((deskarr[0][0] + deskarr[1][1] + deskarr[2][2]) == 2) || ((deskarr[0][0] + deskarr[1][1] + deskarr[2][2]) == 4)) {
                 if (((deskarr[0][0] + deskarr[1][1]) != 0) && ((deskarr[0][0] + deskarr[2][2]) != 0) && ((deskarr[1][1] + deskarr[2][2]) != 0)) {
-                    potencionalwinarr[0] = (deskarr[0][0] + deskarr[1][1] + deskarr[2][2]) / 2; // who is potencional winner
-                    potencionalwinarr[1] = 2; // 2 means diagonal_win
-                    potencionalwinarr[2] = i; // where is potencional win
-                    if (deskarr[0][0] == 0) {
-                        potencionalwinarr[3] = 0; // where is empy arr
-                    }
-                    else {
-                        potencionalwinarr[3] = (deskarr[1][1] == 0) ? 1 : 2;
+                    if (((deskarr[0][i] + deskarr[1][i] + deskarr[2][i] == 4) && (round == 1)) || ((deskarr[0][i] + deskarr[1][i] + deskarr[2][i] == 2) && (round == 0)) || (potencionalwinarr[0] != 0)) {
+                        potencionalwinarr[0] = 3; // 3 means diagonal_win
+                        potencionalwinarr[1] = i; // where is potencional win
+                        if (deskarr[0][0] == 0) {
+                            potencionalwinarr[2] = 0; // where is empy arr
+                        }
+                        else {
+                            potencionalwinarr[2] = (deskarr[1][1] == 0) ? 1 : 2;
+                        }
                     }
                 }    
             }
             /* second diagonal */
             if (((deskarr[0][2] + deskarr[1][1] + deskarr[2][0]) == 2) || ((deskarr[0][0] + deskarr[1][1] + deskarr[2][2]) == 4)) {
                 if (((deskarr[0][2] + deskarr[1][1]) != 0) && ((deskarr[0][2] + deskarr[2][0]) != 0) && ((deskarr[1][1] + deskarr[2][0]) != 0)) {
-                    potencionalwinarr[0] = (deskarr[0][0] + deskarr[1][1] + deskarr[2][2]) / 2; // who is potencional winner
-                    potencionalwinarr[1] = 3; // 3 means second_diagonal_win
-                    potencionalwinarr[2] = i; // where is potencional win
-                    if (deskarr[0][0] == 0) {
-                        potencionalwinarr[3] = 0; // where is empy arr
-                    }
-                    else {
-                        potencionalwinarr[3] = (deskarr[1][1] == 0) ? 1 : 2;
+                    if (((deskarr[0][i] + deskarr[1][i] + deskarr[2][i] == 4) && (round == 1)) || ((deskarr[0][i] + deskarr[1][i] + deskarr[2][i] == 2) && (round == 0)) || (potencionalwinarr[0] != 0)) {
+                        potencionalwinarr[0] = 4; // 4 means second_diagonal_win
+                        potencionalwinarr[1] = i; // where is potencional win
+                        if (deskarr[0][2] == 0) {
+                            potencionalwinarr[2] = 0; // where is empy arr
+                        }
+                        else {
+                            potencionalwinarr[2] = (deskarr[1][1] == 0) ? 1 : 2;
+                        }
                     }
                 }    
             }
