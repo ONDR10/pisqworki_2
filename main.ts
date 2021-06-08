@@ -143,7 +143,7 @@ basic.forever(function () {
             }
             /* column */
             if (((deskarr[0][i] + deskarr[1][i] + deskarr[2][i]) == 2) || ((deskarr[0][i] + deskarr[1][i] + deskarr[2][i]) == 4)) {
-                if (((deskarr[i][0] + deskarr[i][1]) != 0) && ((deskarr[i][0] + deskarr[i][2]) != 0) && ((deskarr[i][1] + deskarr[i][2]) != 0)) {
+                if (((deskarr[0][i] + deskarr[1][i]) != 0) && ((deskarr[0][i] + deskarr[2][i]) != 0) && ((deskarr[1][i] + deskarr[2][i]) != 0)) {
                     if (((deskarr[0][i] + deskarr[1][i] + deskarr[2][i] == 4) && (round == 1)) || ((deskarr[0][i] + deskarr[1][i] + deskarr[2][i] == 2) && (round == 0)) || (potencionalwinarr[0] != 0)) {
                         potencionalwinarr[0] = 2; // 2 means column_win
                         potencionalwinarr[1] = i; // where is potencional win
@@ -185,9 +185,7 @@ basic.forever(function () {
                         }
                     }
                 }    
-            }
-            // pozor na to ktora vyherna kombinacia ma prestnost
-        
+            }        
         }
 
         // find empy blocks
@@ -217,8 +215,28 @@ basic.forever(function () {
                 deskarr[1][1] = round+1;
                 pause(300);
             }
-            else if (1) {
-                
+            else if (potencionalwinarr[0] != 0) {
+                if (potencionalwinarr[0] == 1) {
+                    deskarr[potencionalwinarr[1]][potencionalwinarr[2]] = round + 1;
+                }
+                else if (potencionalwinarr[0] == 2) {
+                    deskarr[potencionalwinarr[2]][potencionalwinarr[1]] = round + 1;
+                }
+                else if (potencionalwinarr[0] == 3) {
+                    deskarr[potencionalwinarr[2]][potencionalwinarr[2]] = round + 1;
+                }
+                else if (potencionalwinarr[0] == 4) {
+                    deskarr[potencionalwinarr[2]][2 - potencionalwinarr[2]] = round + 1;
+                }
+                else {
+                    basic.showLeds(`
+                    # # # # #
+                    # . . . .
+                    # # # . .
+                    # . . . .
+                    # # # # #
+                    `)
+                }
             }
             // Bot 2
             else if ((round == 0 && player1 == 2) || (round == 1 && player2 == 2)) {
