@@ -1,6 +1,12 @@
+/* errors */
+// Bot 2 sa nevie branit
+// Bot 3 neexistuje
+// Player nemoze hrat
+// Zla podmienka pre Bot 2 v nahode
+
 /* variables */
 let mode = 0; // 2 options (mode: 0/1) 
-let player1 = 0;  // player/bot
+let player1 = 2;  // player/bot
 let player2 = 1;  // player/bot
 let confirm = 0;  // variable for confirm (AB button)
 let deskarr = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]; // desk
@@ -116,6 +122,7 @@ basic.forever(function () {
     // GAME
     let myint = 0; // 9 moves possible
     for (myint = 0; myint < 9; myint++) {
+        pause(2000);
         /* wariables */
         let row = 0;
         let column = 0;
@@ -239,7 +246,7 @@ basic.forever(function () {
                 }
             }
             // Bot 2
-            else if ((round == 0 && player1 == 2) || (round == 1 && player2 == 2)) {
+            else if (1) {
                 x = desk_empy_arr[Math.floor(Math.random() * (10-myint))];
                 deskarr[Math.trunc(x/3)][x%3] = round+1;
                 pause(300);
