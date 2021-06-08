@@ -124,7 +124,6 @@ basic.forever(function () {
     // GAME
     let myint = 0; // 9 moves possible
     for (myint = 0; myint < 9; myint++) {
-        pause(2000);
         /* wariables */
         let row = 0;
         let column = 0;
@@ -140,8 +139,8 @@ basic.forever(function () {
             /* row */
             if (((deskarr[i][0] + deskarr[i][1] + deskarr[i][2]) == 2) || ((deskarr[i][0] + deskarr[i][1] + deskarr[i][2]) == 4)) {
                 if (((deskarr[i][0] + deskarr[i][1]) != 0) && ((deskarr[i][0] + deskarr[i][2]) != 0) && ((deskarr[i][1] + deskarr[i][2]) != 0)) {
-                    if ((deskarr[0][0] == 0) || (deskarr[0][0] == 0) || (deskarr[0][0] == 0)) {
-                        if (((deskarr[0][i] + deskarr[1][i] + deskarr[2][i] == 4) && (round == 1)) || ((deskarr[0][i] + deskarr[1][i] + deskarr[2][i] == 2) && (round == 0)) || (potencionalwinarr[0] == 0)) {
+                    if ((deskarr[i][0] == 0) || (deskarr[i][1] == 0) || (deskarr[i][2] == 0)) {
+                        if (((deskarr[i][0] + deskarr[i][1] + deskarr[i][2] == 4) && (round == 1)) || ((deskarr[i][0] + deskarr[i][1] + deskarr[i][2] == 2) && (round == 0)) || (potencionalwinarr[0] == 0)) {
                             potencionalwinarr[0] = 1; // 1 means row_win
                             potencionalwinarr[1] = i; // where is potencional win
                             if (deskarr[i][0] == 0) {
@@ -157,7 +156,7 @@ basic.forever(function () {
             /* column */
             if (((deskarr[0][i] + deskarr[1][i] + deskarr[2][i]) == 2) || ((deskarr[0][i] + deskarr[1][i] + deskarr[2][i]) == 4)) {
                 if (((deskarr[0][i] + deskarr[1][i]) != 0) && ((deskarr[0][i] + deskarr[2][i]) != 0) && ((deskarr[1][i] + deskarr[2][i]) != 0)) {
-                    if ((deskarr[0][0] == 0) || (deskarr[0][0] == 0) || (deskarr[0][0] == 0)) {                    
+                    if ((deskarr[0][i] == 0) || (deskarr[1][i] == 0) || (deskarr[2][i] == 0)) {                    
                         if (((deskarr[0][i] + deskarr[1][i] + deskarr[2][i] == 4) && (round == 1)) || ((deskarr[0][i] + deskarr[1][i] + deskarr[2][i] == 2) && (round == 0)) || (potencionalwinarr[0] == 0)) {
                             potencionalwinarr[0] = 2; // 2 means column_win
                             potencionalwinarr[1] = i; // where is potencional win
@@ -174,7 +173,7 @@ basic.forever(function () {
             /* diagonal */
             if (((deskarr[0][0] + deskarr[1][1] + deskarr[2][2]) == 2) || ((deskarr[0][0] + deskarr[1][1] + deskarr[2][2]) == 4)) {
                 if (((deskarr[0][0] + deskarr[1][1]) != 0) && ((deskarr[0][0] + deskarr[2][2]) != 0) && ((deskarr[1][1] + deskarr[2][2]) != 0)) {
-                    if ((deskarr[0][0] == 0) || (deskarr[0][0] == 0) || (deskarr[0][0] == 0)) {
+                    if ((deskarr[0][0] == 0) || (deskarr[1][1] == 0) || (deskarr[2][2] == 0)) {
                         if (((deskarr[0][0] + deskarr[1][1] + deskarr[2][2] == 4) && (round == 1)) || ((deskarr[0][0] + deskarr[1][1] + deskarr[2][2] == 2) && (round == 0)) || (potencionalwinarr[0] == 0)) {
                             potencionalwinarr[0] = 3; // 3 means diagonal_win
                             potencionalwinarr[1] = i; // where is potencional win
@@ -189,9 +188,9 @@ basic.forever(function () {
                 }    
             }
             /* second diagonal */
-            if (((deskarr[0][2] + deskarr[1][1] + deskarr[2][0]) == 2) || ((deskarr[0][0] + deskarr[1][1] + deskarr[2][2]) == 4)) {
+            if (((deskarr[0][2] + deskarr[1][1] + deskarr[2][0]) == 2) || ((deskarr[0][2] + deskarr[1][1] + deskarr[2][0]) == 4)) {
                 if (((deskarr[0][2] + deskarr[1][1]) != 0) && ((deskarr[0][2] + deskarr[2][0]) != 0) && ((deskarr[1][1] + deskarr[2][0]) != 0)) {
-                    if ((deskarr[0][0] == 0) || (deskarr[0][0] == 0) || (deskarr[0][0] == 0)) {
+                    if ((deskarr[0][2] == 0) || (deskarr[1][1] == 0) || (deskarr[2][0] == 0)) {
                         if (((deskarr[0][2] + deskarr[1][1] + deskarr[2][0] == 4) && (round == 1)) || ((deskarr[0][2] + deskarr[1][1] + deskarr[2][0] == 2) && (round == 0)) || (potencionalwinarr[0] == 0)) {
                             potencionalwinarr[0] = 4; // 4 means second_diagonal_win
                             potencionalwinarr[1] = i; // where is potencional win
@@ -341,7 +340,11 @@ basic.forever(function () {
                     }
                 }
             }
-        }        
+        }
+   
+        // pause
+        pause(2000);        
+   
         // ending afer win/lost
         if (resultarr[0] != 0) {
             break;        
