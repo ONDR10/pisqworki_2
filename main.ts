@@ -2,12 +2,13 @@
 // Bot 2 sa nevie branit ***************** asi vyriesene
 // Bot 3 neexistuje
 // Player nemoze hrat
-// Zla podmienka pre Bot 2 v nahode
-// Bot 2 prepisuje policka inym botom
+// Zla podmienka pre Bot 2 v nahode ****** asi vyriesene (chyba bola inde)
+// ! Bot 2 prepisuje policka inym botom
+// ! Za hraca hra Bot 2 ****************** asi vyriesene
 
 /* variables */
 let mode = 0; // 2 options (mode: 0/1) 
-let player1 = 2;  // player/bot
+let player1 = 0;  // player/bot
 let player2 = 1;  // player/bot
 let confirm = 0;  // variable for confirm (AB button)
 let deskarr = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]; // desk
@@ -47,7 +48,7 @@ function decraselevel(myint = 0)
 /* Program */
 basic.forever(function () {
     // reset variables
-    player1 = 0;
+    player1 = 2;
     player2 = 1;
     confirm = 0;
     deskarr = [[0, 0, 0], [0, 0, 0], [0, 0, 0]];
@@ -139,13 +140,15 @@ basic.forever(function () {
             /* row */
             if (((deskarr[i][0] + deskarr[i][1] + deskarr[i][2]) == 2) || ((deskarr[i][0] + deskarr[i][1] + deskarr[i][2]) == 4)) {
                 if (((deskarr[i][0] + deskarr[i][1]) != 0) && ((deskarr[i][0] + deskarr[i][2]) != 0) && ((deskarr[i][1] + deskarr[i][2]) != 0)) {
-                    potencionalwinarr[0] = 1; // 1 means row_win
-                    potencionalwinarr[1] = i; // where is potencional win
-                    if (deskarr[i][0] == 0) {
-                        potencionalwinarr[2] = 0; // where is empy arr
-                    }
-                    else {
-                        potencionalwinarr[2] = (deskarr[i][1] == 0) ? 1 : 2;
+                    if (((deskarr[0][i] + deskarr[1][i] + deskarr[2][i] == 4) && (round == 1)) || ((deskarr[0][i] + deskarr[1][i] + deskarr[2][i] == 2) && (round == 0)) || (potencionalwinarr[0] == 0)) {
+                        potencionalwinarr[0] = 1; // 1 means row_win
+                        potencionalwinarr[1] = i; // where is potencional win
+                        if (deskarr[i][0] == 0) {
+                            potencionalwinarr[2] = 0; // where is empy arr
+                        }
+                        else {
+                            potencionalwinarr[2] = (deskarr[i][1] == 0) ? 1 : 2;
+                        }
                     }
                 }    
             }
@@ -212,7 +215,7 @@ basic.forever(function () {
             
         } 
         // Bot 1 (random)
-        if ((round == 0 && player1 == 1) || (round == 1 && player2 == 1)) {
+        else if ((round == 0 && player1 == 1) || (round == 1 && player2 == 1)) {
             x = desk_empy_arr[Math.floor(Math.random() * (10-myint))];
             deskarr[Math.trunc(x/3)][x%3] = round+1;
             pause(300);
@@ -247,7 +250,7 @@ basic.forever(function () {
                 }
             }
             // Bot 2
-            else if (1) {
+            else if ((round == 0 && player1 == 2) || (round == 1 && player2 == 2)) {
                 x = desk_empy_arr[Math.floor(Math.random() * (10-myint))];
                 deskarr[Math.trunc(x/3)][x%3] = round+1;
                 pause(300);
