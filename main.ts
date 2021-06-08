@@ -1,10 +1,11 @@
 /* errors */
 // Bot 2 sa nevie branit ***************** asi vyriesene
-// Bot 3 neexistuje
-// Player nemoze hrat
 // Zla podmienka pre Bot 2 v nahode ****** asi vyriesene (chyba bola inde)
 // ! Bot 2 prepisuje policka inym botom ** asi vyriesene
 // ! Za hraca hra Bot 2 ****************** asi vyriesene
+
+// Bot 3 neexistuje
+// Player nemoze hrat
 
 /* variables */
 let mode = 0; // 2 options (mode: 0/1) 
