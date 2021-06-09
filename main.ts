@@ -5,9 +5,10 @@
 // ! Za hraca hra Bot 2 ****************** asi vyriesene
 // Player nemoze hrat ******************** asi vyriesene
 // Remiza a prehra *********************** asi vyriesene 
+// ? Bot 1 prepisuje policka ************* asi vyriesene
 
 // Bot 3 neexistuje
-// ? Bot 1 prepisuje policka
+
 
 /* variables */
 let mode = 1; // 2 options (mode: 0/1) 
@@ -274,7 +275,7 @@ basic.forever(function () {
         } 
         // Bot 1 (random)
         else if ((round == 0 && player1 == 1) || (round == 1 && player2 == 1)) {
-            x = desk_empy_arr[Math.floor(Math.random() * (10-myint))];
+            x = desk_empy_arr[Math.floor(Math.random() * (9-myint))];
             deskarr[Math.trunc(x/3)][x%3] = round+1;
             pause(300);
         }
@@ -309,7 +310,7 @@ basic.forever(function () {
             }
             // Bot 2
             else if ((round == 0 && player1 == 2) || (round == 1 && player2 == 2)) {
-                x = desk_empy_arr[Math.floor(Math.random() * (10-myint))];
+                x = desk_empy_arr[Math.floor(Math.random() * (9-myint))];
                 deskarr[Math.trunc(x/3)][x%3] = round+1;
                 pause(300);
             }
