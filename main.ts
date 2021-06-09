@@ -7,6 +7,7 @@
 
 // Bot 3 neexistuje
 // Bot 1 prepisuje policka
+// Remiza a prehra blbnu 
 
 /* variables */
 let mode = 0; // 2 options (mode: 0/1) 
