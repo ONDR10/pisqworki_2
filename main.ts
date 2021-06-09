@@ -209,7 +209,7 @@ basic.forever(function () {
             }        
         }
 
-        // find empy blocks
+        // find empty blocks
         for (i = 0, j = 0; i < 3; i++) {
             for (y = 0; y < 3; y++) {
                 if (deskarr[i][y] == 0) {
