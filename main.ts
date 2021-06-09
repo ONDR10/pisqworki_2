@@ -4,13 +4,13 @@
 // ! Bot 2 prepisuje policka inym botom ** asi vyriesene
 // ! Za hraca hra Bot 2 ****************** asi vyriesene
 // Player nemoze hrat ******************** asi vyriesene
-// Remiza a prehra  ********************** asi vyriesene 
+// Remiza a prehra *********************** asi vyriesene 
 
 // Bot 3 neexistuje
 // ? Bot 1 prepisuje policka
 
 /* variables */
-let mode = 0; // 2 options (mode: 0/1) 
+let mode = 1; // 2 options (mode: 0/1) 
 let player1 = 0;  // player/bot
 let player2 = 1;  // player/bot
 let confirm = 0;  // variable for confirm (AB button)
@@ -262,7 +262,7 @@ basic.forever(function () {
                     confirm = 1;
                 })
                 
-                led.plot(i = player_position%3 + 1, y = Math.trunc(player_position/3) + 1);
+                led.plotBrightness(i = player_position%3 + 1, y = Math.trunc(player_position/3) + 1, ((3*128) - ((1+round)*128)));
                 pause(300);
                 led.unplot(i, y);
                 pause(300);
