@@ -3,9 +3,10 @@
 // Zla podmienka pre Bot 2 v nahode ****** asi vyriesene (chyba bola inde)
 // ! Bot 2 prepisuje policka inym botom ** asi vyriesene
 // ! Za hraca hra Bot 2 ****************** asi vyriesene
+// Player nemoze hrat ******************** asi vyriesene
 
 // Bot 3 neexistuje
-// Player nemoze hrat
+// Bot 1 prepisuje policka
 
 /* variables */
 let mode = 0; // 2 options (mode: 0/1) 
@@ -225,6 +226,9 @@ basic.forever(function () {
                 confirm = 0;
                 while (deskarr[Math.trunc(player_position/3)][player_position%3] != 0) {
                     player_position++;
+                    if (player_position > 8) {
+                        player_position = 0;
+                    } 
                 }
             
                 input.onButtonPressed(Button.A, function () {
@@ -232,18 +236,23 @@ basic.forever(function () {
                     while (deskarr[Math.trunc(player_position/3)][player_position%3] != 0) {
                         player_position--;
                         if (player_position < 0) {
-                            player_position = 9;
+                            player_position = 8;
                         }
                     }  
                 })
 
                 input.onButtonPressed(Button.B, function () {
                     player_position++;
-                    while (deskarr[Math.trunc(player_position/3)][player_position%3] != 0) {
+                    if (player_position > 8) {
+                        player_position = 8;
+                        x = 1;
+                    }
+                    while ((deskarr[Math.trunc(player_position/3)][player_position%3] != 0) || (x == 1)) {
                         player_position++;
-                        if (player_position > 9) {
+                        if (player_position > 8) {
                             player_position = 0;
                         }
+                        x = 0;
                     }
                 })
 
