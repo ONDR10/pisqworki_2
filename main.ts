@@ -4,10 +4,10 @@
 // ! Bot 2 prepisuje policka inym botom ** asi vyriesene
 // ! Za hraca hra Bot 2 ****************** asi vyriesene
 // Player nemoze hrat ******************** asi vyriesene
+// Remiza a prehra  ********************** asi vyriesene 
 
 // Bot 3 neexistuje
-// Bot 1 prepisuje policka
-// Remiza a prehra blbnu 
+// ? Bot 1 prepisuje policka
 
 /* variables */
 let mode = 0; // 2 options (mode: 0/1) 
@@ -394,7 +394,7 @@ basic.forever(function () {
         }
    
         // pause
-        pause(2000);        
+        pause(1000);        
    
         // ending afer win/lost
         if (resultarr[0] != 0) {
@@ -485,6 +485,9 @@ basic.forever(function () {
                     pause(333);
                     basic.clearScreen();
                     pause(333); 
+                }
+                else if (myint == 9) {
+                    basic.showString("DRAW");
                 }
                 else {
                     if (helpint == 0) {
