@@ -402,6 +402,8 @@ basic.forever(function () {
             break;        
         }
     }
+    confirm = 0;
+    
     // evaluation   
         while (1) {
             // draw desk
