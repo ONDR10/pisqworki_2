@@ -11,7 +11,7 @@
 
 
 /* variables */
-let mode = 1; // 2 options (mode: 0/1) 
+let mode = 0; // 2 options (mode: 0/1) 
 let player1 = 0;  // player/bot
 let player2 = 1;  // player/bot
 let confirm = 0;  // variable for confirm (AB button)
