@@ -19,7 +19,8 @@ let helpint = 0; // "speed in win" in player section
 let round = 0; // which player playing now 
 let desk_empy_arr = [0, 0, 0, 0, 0, 0, 0, 0, 0]; // array for random bot
 let x = 0; // help with Bots
-let potencionalwinarr = [0, 0, 0];
+let potencionalwinarr = [0, 0, 0]; // find potencional wins
+let player_position = 0; // player position when he playing.
 
 /* functions */
 function incraselevel(myint = 0)
@@ -49,7 +50,7 @@ function decraselevel(myint = 0)
 /* Program */
 basic.forever(function () {
     // reset variables
-    player1 = 2;
+    player1 = 0;
     player2 = 1;
     confirm = 0;
     deskarr = [[0, 0, 0], [0, 0, 0], [0, 0, 0]];
@@ -220,7 +221,46 @@ basic.forever(function () {
 
         // Player 
         if ((round == 0 && player1 == 0) || (round == 1 && player2 == 0)) {
+            while (1) {
+                confirm = 0;
+                while (deskarr[Math.trunc(player_position/3)][player_position%3] != 0) {
+                    player_position++;
+                }
             
+                input.onButtonPressed(Button.A, function () {
+                    player_position--;
+                    while (deskarr[Math.trunc(player_position/3)][player_position%3] != 0) {
+                        player_position--;
+                        if (player_position < 0) {
+                            player_position = 9;
+                        }
+                    }  
+                })
+
+                input.onButtonPressed(Button.B, function () {
+                    player_position++;
+                    while (deskarr[Math.trunc(player_position/3)][player_position%3] != 0) {
+                        player_position++;
+                        if (player_position > 9) {
+                            player_position = 0;
+                        }
+                    }
+                })
+
+                input.onButtonPressed(Button.AB, function () {
+                    deskarr[Math.trunc(player_position/3)][player_position%3] = round + 1;
+                    confirm = 1;
+                })
+                
+                led.plot(i = player_position%3 + 1, y = Math.trunc(player_position/3) + 1);
+                pause(300);
+                led.unplot(i, y);
+                pause(300);
+
+                if (confirm == 1) {
+                    break;
+                }
+            }
         } 
         // Bot 1 (random)
         else if ((round == 0 && player1 == 1) || (round == 1 && player2 == 1)) {
