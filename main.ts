@@ -281,7 +281,7 @@ basic.forever(function () {
         }
         // Bot 2 (medium) && Bot 3 (invincible)
         else {
-            if (deskarr[1][1] == 0) {
+            if ((deskarr[1][1] == 0) && ((round == 0 && player1 == 2) || (round == 1 && player2 == 2))) {
                 deskarr[1][1] = round+1;
                 pause(300);
             }
