@@ -387,6 +387,20 @@ basic.forever(function () {
                     
                 }
                 else if (myint == 4) {
+                    if (deskarr[1][1] == 2 - round) {
+                        if (deskarr[0][0] == 0) {
+                            deskarr[0][0] = round + 1;
+                        }
+                        else if (deskarr[0][2] == 0) {
+                            deskarr[0][2] = round + 1;
+                        }
+                        else if (deskarr[2][0] == 0) {
+                            deskarr[2][0] = round + 1;
+                        }
+                        else if (deskarr[2][2] == 0) {
+                            deskarr[2][2] = round + 1;
+                        }
+                    }
                     
                 }
                 else if (myint == 5) {
