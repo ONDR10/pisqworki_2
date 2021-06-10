@@ -316,7 +316,85 @@ basic.forever(function () {
             }
             // Bot 3
             else {
-                
+                if (myint == 0) {
+                    if (Math.floor(Math.random() * 2) == 0) {
+                        deskarr[1][1] = round + 1;
+                    }
+                    else {
+                        switch (i = Math.floor(Math.random() * 4)) {
+                            case 0:
+                                deskarr[0][0] = round + 1;
+                            case 1:
+                                deskarr[0][2] = round + 1;
+                            case 2:
+                                deskarr[2][0] = round + 1;
+                            case 3:
+                                deskarr[2][2] = round + 1;
+                         }
+                    }
+                }
+                else if (myint == 1) {
+
+                }
+                else if (myint == 2) {
+                    if (deskarr[1][1] == round + 1) {
+                        if ((deskarr[0][1] + deskarr[1][0] + deskarr[1][2] + deskarr[2][1]) != 0) {
+                            if (deskarr[0][0] != 0) {
+                                deskarr[2][2] = round + 1;
+                            }
+                            else if (deskarr[0][2] != 0) {
+                                deskarr[2][0] = round + 1;
+                            }
+                            else if (deskarr[2][0] != 0) {
+                                deskarr[0][2] = round + 1;
+                            }
+                            else if (deskarr[2][2] != 0) {
+                                deskarr[0][0] = round + 1;
+                            }
+                        }
+                        else {
+                            switch (Math.floor(Math.random() * 4)) {
+                            case 0:
+                                deskarr[0][0] = round + 1;
+                            case 1:
+                                deskarr[0][2] = round + 1;
+                            case 2:
+                                deskarr[2][0] = round + 1;
+                            case 3:
+                                deskarr[2][2] = round + 1;
+                            }
+                        }
+                    }
+                    else {
+                        if (deskarr[1][1] == 0) {
+                            deskarr[1][1] = round + 1;
+                        }
+                        else {
+                            switch (i) {
+                                case 0:
+                                    deskarr[2][2] = round + 1;
+                                case 1:
+                                    deskarr[2][0] = round + 1;
+                                case 2:
+                                    deskarr[0][2] = round + 1;
+                                case 3:
+                                    deskarr[0][0] = round + 1;
+                            }
+                        }
+                    }
+                }
+                else if (myint == 3) {
+                    
+                }
+                else if (myint == 4) {
+                    
+                }
+                else if (myint == 5) {
+                    
+                }
+                else if (myint == 6) {
+                    
+                }
             }
         }
 
