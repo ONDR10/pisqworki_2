@@ -363,12 +363,16 @@ basic.forever(function () {
                             switch (Math.floor(Math.random() * 4)) {
                             case 0:
                                 deskarr[0][0] = round + 1;
+                                break;
                             case 1:
                                 deskarr[0][2] = round + 1;
+                                break;
                             case 2:
                                 deskarr[2][0] = round + 1;
+                                break;
                             case 3:
                                 deskarr[2][2] = round + 1;
+                                break;
                             }
                         }
                     }
@@ -380,12 +384,16 @@ basic.forever(function () {
                             switch (i) {
                                 case 0:
                                     deskarr[2][2] = round + 1;
+                                    break;
                                 case 1:
                                     deskarr[2][0] = round + 1;
+                                    break;
                                 case 2:
                                     deskarr[0][2] = round + 1;
+                                    break;
                                 case 3:
                                     deskarr[0][0] = round + 1;
+                                    break;
                             }
                         }
                     }
