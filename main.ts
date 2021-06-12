@@ -6,9 +6,10 @@
 // Player nemoze hrat ******************** asi vyriesene
 // Remiza a prehra *********************** asi vyriesene 
 // ? Bot 1 prepisuje policka ************* asi vyriesene
+// Bot 3 robi 2 tahy naraz *************** asi vyriesene
 
 // Bot 3 neexistuje
-// Bot 3 robi 2 tahy naraz
+// Bot 3 prehra aj ked remizuje
 
 
 /* variables */
@@ -322,22 +323,19 @@ basic.forever(function () {
                         deskarr[1][1] = round + 1;
                     }
                     else {
-                        switch (i = Math.floor(Math.random() * 4)) {
-                            case 0:
-                                deskarr[0][0] = round + 1;
-                                break;
-                            case 1:
-                                deskarr[0][2] = round + 1;
-                                break;
-                            case 2:
-                                deskarr[2][0] = round + 1;
-                                break;
-                            case 3:
-                                deskarr[2][2] = round + 1;
-                                break;
-                            default:
-                                deskarr[2][2] = round + 1;
-                         }
+                        i = Math.floor(Math.random() * 4)
+                        if (i == 0) {
+                            deskarr[0][0] = round + 1;
+                        }
+                        else if (i == 1) {
+                            deskarr[0][2] = round + 1;
+                        }
+                        else if (i == 2) {
+                            deskarr[2][0] = round + 1;
+                        }
+                        else {
+                            deskarr[2][2] = round + 1;
+                        }
                     }
                 }
                 else if (myint == 1) {
@@ -345,7 +343,7 @@ basic.forever(function () {
                 }
                 else if (myint == 2) {
                     if (deskarr[1][1] == round + 1) {
-                        if ((deskarr[0][1] + deskarr[1][0] + deskarr[1][2] + deskarr[2][1]) != 0) {
+                        if ((deskarr[0][0] + deskarr[0][2] + deskarr[2][0] + deskarr[2][2]) != 0) {
                             if (deskarr[0][0] != 0) {
                                 deskarr[2][2] = round + 1;
                             }
@@ -377,23 +375,21 @@ basic.forever(function () {
                         }
                     }
                     else {
-                        if (deskarr[1][1] == 0 && ((deskarr[0][1] + deskarr[1][0] + deskarr[1][2] + deskarr[2][1]) != 0)) {
+                        if ((deskarr[1][1] == 0) && ((deskarr[0][1] + deskarr[1][0] + deskarr[1][2] + deskarr[2][1]) != 0)) {
                             deskarr[1][1] = round + 1;
                         }
                         else {
-                            switch (i) {
-                                case 0:
-                                    deskarr[2][2] = round + 1;
-                                    break;
-                                case 1:
-                                    deskarr[2][0] = round + 1;
-                                    break;
-                                case 2:
-                                    deskarr[0][2] = round + 1;
-                                    break;
-                                case 3:
-                                    deskarr[0][0] = round + 1;
-                                    break;
+                            if (deskarr[0][0] == (round + 1)) {
+                                deskarr[2][2] = round + 1;
+                            }
+                            else if (deskarr[0][2] == (round + 1)) {
+                                deskarr[2][0] = round + 1;
+                            }
+                            else if (deskarr[2][0] == (round + 1)) {
+                                deskarr[0][2] = round + 1;
+                            }
+                            else {
+                                deskarr[0][0] = round + 1;
                             }
                         }
                     }
@@ -421,7 +417,31 @@ basic.forever(function () {
                     
                 }
                 else if (myint == 6) {
-                    
+                    if ((deskarr[0][1] == (round + 1)) || (deskarr[2][1] == (round + 1))) {
+                        if (Math.floor(Math.random() * 2) == 0) {
+                            deskarr[1][0] = round + 1;
+                        }
+                        else {
+                            deskarr[1][2] = round + 1;
+                        }
+                    }
+                    else if ((deskarr[1][0] == (round + 1)) || (deskarr[1][2] == (round + 1))) {
+                        if (Math.floor(Math.random() * 2) == 0) {
+                            deskarr[0][1] = round + 1;
+                        }
+                        else {
+                            deskarr[2][1] = round + 1;
+                        }
+                    }
+                    else {
+                        basic.showLeds(`
+                        # # # # .
+                        # . . . .
+                        # # # . .
+                        # . . . .
+                        # # # # .
+                        `)
+                    }
                 }
                 else {
                     x = desk_empy_arr[Math.floor(Math.random() * (9-myint))];
