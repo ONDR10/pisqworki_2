@@ -8,6 +8,7 @@
 // ? Bot 1 prepisuje policka ************* asi vyriesene
 
 // Bot 3 neexistuje
+// Bot 3 robi 2 tahy naraz
 
 
 /* variables */
@@ -53,7 +54,7 @@ function decraselevel(myint = 0)
 /* Program */
 basic.forever(function () {
     // reset variables
-    player1 = 0;
+    player1 = 3;
     player2 = 1;
     confirm = 0;
     deskarr = [[0, 0, 0], [0, 0, 0], [0, 0, 0]];
@@ -324,11 +325,17 @@ basic.forever(function () {
                         switch (i = Math.floor(Math.random() * 4)) {
                             case 0:
                                 deskarr[0][0] = round + 1;
+                                break;
                             case 1:
                                 deskarr[0][2] = round + 1;
+                                break;
                             case 2:
                                 deskarr[2][0] = round + 1;
+                                break;
                             case 3:
+                                deskarr[2][2] = round + 1;
+                                break;
+                            default:
                                 deskarr[2][2] = round + 1;
                          }
                     }
@@ -366,7 +373,7 @@ basic.forever(function () {
                         }
                     }
                     else {
-                        if (deskarr[1][1] == 0) {
+                        if (deskarr[1][1] == 0 && ((deskarr[0][1] + deskarr[1][0] + deskarr[1][2] + deskarr[2][1]) != 0)) {
                             deskarr[1][1] = round + 1;
                         }
                         else {
@@ -401,13 +408,16 @@ basic.forever(function () {
                             deskarr[2][2] = round + 1;
                         }
                     }
-                    
                 }
                 else if (myint == 5) {
                     
                 }
                 else if (myint == 6) {
                     
+                }
+                else {
+                    x = desk_empy_arr[Math.floor(Math.random() * (9-myint))];
+                    deskarr[Math.trunc(x/3)][x%3] = round+1;
                 }
             }
         }
