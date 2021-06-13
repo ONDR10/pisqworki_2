@@ -7,9 +7,9 @@
 // Remiza a prehra *********************** asi vyriesene 
 // ? Bot 1 prepisuje policka ************* asi vyriesene
 // Bot 3 robi 2 tahy naraz *************** asi vyriesene
+// Bot 3 prehra aj ked remizuje ********** asi vyriesene (chyba bola v podmienke vypisovania "win")
 
-// Bot 3 neexistuje
-// Bot 3 prehra aj ked remizuje
+// Bot 3 nie je dokonceny
 
 
 /* variables */
@@ -608,7 +608,7 @@ basic.forever(function () {
             // Player
             basic.clearScreen();
             if ((player1 == 0 && player2 != 0) || (player1 != 0 && player2 == 0)) {
-                if ((player1 == 0 && resultarr[2] == 1) || (player1 != 0 && resultarr[2] != 1)) {
+                if ((player1 == 0 && resultarr[2] == 1) || (player1 != 0 && resultarr[2] == 2)) {
                     if (helpint == 0) {
                         basic.showString("Win");
                         pause(333);
