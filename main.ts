@@ -9,7 +9,7 @@
 // Bot 3 robi 2 tahy naraz *************** asi vyriesene
 // Bot 3 prehra aj ked remizuje ********** asi vyriesene (chyba bola v podmienke vypisovania "win")
 
-// Bot 3 nie je dokonceny
+// Bot 3 nie je dokonceny - ! nevie obranovat !
 
 
 /* variables */
