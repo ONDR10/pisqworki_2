@@ -442,18 +442,18 @@ basic.forever(function () {
                     else if (((deskarr[0][2] + deskarr[1][1] + deskarr[2][0]) > 3) && ((deskarr[0][2] != 0) && (deskarr[1][1] != 0) && (deskarr[2][0] != 0))) {
                         if (deskarr[1][1] == (round + 1)) {
                             switch (Math.floor(Math.random() * 4)) {
-                            case 0:
-                                deskarr[0][1] = round + 1;
-                                break;
-                            case 1:
-                                deskarr[1][0] = round + 1;
-                                break;
-                            case 2:
-                                deskarr[1][2] = round + 1;
-                                break;
-                            case 3:
-                                deskarr[2][1] = round + 1;
-                                break;
+                                case 0:
+                                    deskarr[0][1] = round + 1;
+                                    break;
+                                case 1:
+                                    deskarr[1][0] = round + 1;
+                                    break;
+                                case 2:
+                                    deskarr[1][2] = round + 1;
+                                    break;
+                                case 3:
+                                    deskarr[2][1] = round + 1;
+                                    break;
                             }
                         }
                         else {
@@ -464,6 +464,62 @@ basic.forever(function () {
                                 deskarr[2][2] = round + 1;
                             }
                         }
+                    }
+                    else if ((deskarr[0][1] + deskarr[1][0]) == ((2 - round) * 2)) {
+                        switch (Math.floor(Math.random() * 3)) {
+                            case 0:
+                                deskarr[0][2] = round + 1;
+                                break;
+                            case 1:
+                                deskarr[2][0] = round + 1;
+                                break;
+                            case 2:
+                                deskarr[0][0] = round + 1;
+                                break;
+                        }   
+                    }
+                    else if ((deskarr[0][1] + deskarr[1][2]) == ((2 - round) * 2)) {
+                        switch (Math.floor(Math.random() * 3)) {
+                            case 0:
+                                deskarr[0][0] = round + 1;
+                                break;
+                            case 1:
+                                deskarr[0][2] = round + 1;
+                                break;
+                            case 2:
+                                deskarr[2][2] = round + 1;
+                                break;
+                        }   
+                    }
+                    else if ((deskarr[1][0] + deskarr[2][1]) == ((2 - round) * 2)) {
+                        switch (Math.floor(Math.random() * 3)) {
+                            case 0:
+                                deskarr[0][0] = round + 1;
+                                break;
+                            case 1:
+                                deskarr[2][0] = round + 1;
+                                break;
+                            case 2:
+                                deskarr[2][2] = round + 1;
+                                break;
+                        }   
+                    }
+                    else if ((deskarr[1][2] + deskarr[2][1]) == ((2 - round) * 2)) {
+                        switch (Math.floor(Math.random() * 3)) {
+                            case 0:
+                                deskarr[0][2] = round + 1;
+                                break;
+                            case 1:
+                                deskarr[2][0] = round + 1;
+                                break;
+                            case 2:
+                                deskarr[2][2] = round + 1;
+                                break;
+                        }   
+                    }
+                    else {
+                        x = desk_empy_arr[Math.floor(Math.random() * (9-myint))];
+                        deskarr[Math.trunc(x/3)][x%3] = round+1;
                     }
                 }
                 else if (myint == 4) {
