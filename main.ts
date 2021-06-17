@@ -355,40 +355,6 @@ basic.forever(function () {
                                 break;
                         }
                     }
-                    else if ((deskarr[0][1] + deskarr[1][0] + deskarr[1][2] + deskarr[2][1]) != 0) {
-                        if (deskarr[0][1] != 0) {
-                            if (Math.floor(Math.random() * 2) == 0) {
-                                deskarr[2][0] = round + 1;
-                            }
-                            else {
-                                deskarr[2][2] = round + 1;
-                            }
-                        }
-                        else if (deskarr[1][0] != 0) {
-                            if (Math.floor(Math.random() * 2) == 0) {
-                                deskarr[0][2] = round + 1;
-                            }
-                            else {
-                                deskarr[2][2] = round + 1;
-                            }
-                        }
-                        else if (deskarr[1][2] != 0) {
-                            if (Math.floor(Math.random() * 2) == 0) {
-                                deskarr[0][0] = round + 1;
-                            }
-                            else {
-                                deskarr[2][0] = round + 1;
-                            }
-                        }
-                        else if (deskarr[2][1] != 0) {
-                            if (Math.floor(Math.random() * 2) == 0) {
-                                deskarr[0][0] = round + 1;
-                            }
-                            else {
-                                deskarr[0][2] = round + 1;
-                            }
-                        }
-                    }
                     else {
                         deskarr[1][1] = round + 1;
                     }
