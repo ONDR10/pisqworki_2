@@ -584,6 +584,7 @@ basic.forever(function () {
                                         break;
                                     case 3:
                                         deskarr[1][2] = round + 1;
+                                        break;
                                 }
                             }
                         }
@@ -601,6 +602,7 @@ basic.forever(function () {
                                         break;
                                     case 3:
                                         deskarr[2][1] = round + 1;
+                                        break;
                                 }
                             }
                         }
@@ -618,6 +620,7 @@ basic.forever(function () {
                                         break;
                                     case 3:
                                         deskarr[2][2] = round + 1;
+                                        break;
                                 }
                             }
                         }
@@ -635,6 +638,7 @@ basic.forever(function () {
                                         break;
                                     case 3:
                                         deskarr[2][2] = round + 1;
+                                        break;
                                 }
                             }
                         }
@@ -764,6 +768,22 @@ basic.forever(function () {
                                 deskarr[2][2] = round + 1;
                             } 
                         }
+                    }
+                    else if (((deskarr[0][1] + deskarr[1][0] + deskarr[2][2]) == ((2 - round) * 3)) || ((deskarr[1][2] + deskarr[2][1] + deskarr[0][0]) == ((2 - round) * 3))) {
+                        if (Math.floor(Math.random() * 2) == 0) {
+                            deskarr[0][2] = round + 1;
+                        }
+                        else {
+                            deskarr[2][0] = round + 1;
+                        } 
+                    }
+                    else if (((deskarr[0][1] + deskarr[1][2] + deskarr[2][0]) == ((2 - round) * 3)) || ((deskarr[1][0] + deskarr[2][1] + deskarr[0][2]) == ((2 - round) * 3))) {
+                        if (Math.floor(Math.random() * 2) == 0) {
+                            deskarr[0][0] = round + 1;
+                        }
+                        else {
+                            deskarr[2][2] = round + 1;
+                        } 
                     }
                 }
                 else if (myint == 6) {
